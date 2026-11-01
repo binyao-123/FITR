@@ -110,41 +110,11 @@ for (const video of [sim, real]) {
   });
 }
 
-const results = {
-  'post-training': {
-    title: 'Simulation post-training transfers to reality.',
-    text: 'Residual RL, recovery data collection, and SFT distillation raise mean real-world NJC from 60.05% to 82.50%. The final robot runs the distilled VLA policy alone.',
-    number: '+22.45', unit: 'percentage points · real-world NJC',
-    caption: 'PRTS: before and after RL post-training. Lines: simulation; bars: real-world evaluation.'
-  },
-  'sim-to-real': {
-    title: 'Zero-shot transfer across six manipulation tasks.',
-    text: 'π₀.₅ achieves mean NJC of 68.95% in simulation and 57.25% on real robots, without real-world policy fine-tuning. Lamp and faucet manipulation remain challenging.',
-    number: '57.25%', unit: 'mean real-world NJC · π₀.₅',
-    caption: 'π₀.₅ in simulation and the real world. The gap is 11.70 percentage points.'
-  },
-  'backbones': {
-    title: 'One data pipeline. Three VLA backbones.',
-    text: 'PRTS achieves the highest mean real-world NJC (60.93%), followed by π₀.₅ (57.99%) and X-VLA (54.55%). PRTS leads on five tasks; X-VLA performs best on display manipulation.',
-    number: '60.93%', unit: 'mean real-world NJC · PRTS',
-    caption: 'Real-world VLA comparison: PRTS, π₀.₅ and X-VLA, each trained for 30k steps on fully randomized FITR data.'
-  }
-};
-setupTabs('[data-result]', button => {
-  const key = button.dataset.result;
-  const result = results[key];
-  for (const field of ['title', 'text', 'number', 'unit', 'caption']) document.querySelector('#result-' + field).textContent = result[field];
-  document.querySelector('#result-image').src = 'assets/images/' + key + '.webp';
-  document.querySelector('#result-image').alt = result.caption;
-  document.querySelector('#result-link').href = 'assets/images/' + key + '.webp';
-  document.querySelector('#result-panel').setAttribute('aria-labelledby', button.id);
-});
-
 const sections = [...document.querySelectorAll('main > section[id]')];
 const links = [...document.querySelectorAll('.contents nav a')];
 function updateContents() {
   let current = sections[0];
-  for (const section of sections) if (section.getBoundingClientRect().top <= 150) current = section;
+  for (const section of sections) if (section.getBoundingClientRect().top <= 180) current = section;
   links.forEach(link => {
     const active = link.getAttribute('href') === '#' + current.id;
     link.classList.toggle('active', active);
