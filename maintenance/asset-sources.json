@@ -1,0 +1,182 @@
+[
+  {
+    "output": "assets/images/overview.webp",
+    "source": "iclr2027/figure/main1.pdf"
+  },
+  {
+    "output": "assets/images/rollouts.webp",
+    "source": "iclr2027/figure/real3.pdf"
+  },
+  {
+    "output": "assets/images/contacts.webp",
+    "source": "iclr2027/figure/contact_review.pdf"
+  },
+  {
+    "output": "assets/images/collection.webp",
+    "source": "iclr2027/figure/fig_collect.pdf"
+  },
+  {
+    "output": "assets/images/sim-to-real.webp",
+    "source": "iclr2027/figure/data/4.png"
+  },
+  {
+    "output": "assets/images/backbones.webp",
+    "source": "iclr2027/figure/data/3.png"
+  },
+  {
+    "output": "assets/images/post-training.webp",
+    "source": "iclr2027/figure/data/5.png"
+  },
+  {
+    "output": "assets/images/laptop-input.webp",
+    "source": "其他/图片素材/main/mac.jpg"
+  },
+  {
+    "output": "assets/images/laptop-urdf.webp",
+    "source": "其他/图片素材/main/mac_urdf.png"
+  },
+  {
+    "output": "assets/images/laptop-contact.webp",
+    "source": "其他/图片素材/main/mac_lab.png"
+  },
+  {
+    "output": "assets/images/display-input.webp",
+    "source": "其他/图片素材/main/display.png"
+  },
+  {
+    "output": "assets/images/display-urdf.webp",
+    "source": "其他/图片素材/main/display_urdf.png"
+  },
+  {
+    "output": "assets/images/display-contact.webp",
+    "source": "其他/图片素材/main/display_lab.png"
+  },
+  {
+    "output": "assets/images/microwave-input.webp",
+    "source": "其他/图片素材/main/microwave.png"
+  },
+  {
+    "output": "assets/images/microwave-urdf.webp",
+    "source": "其他/图片素材/main/microwave_urdf.png"
+  },
+  {
+    "output": "assets/images/microwave-contact.webp",
+    "source": "其他/图片素材/main/microwave_lab.png"
+  },
+  {
+    "output": "assets/images/asset-1.webp",
+    "source": "其他/图片素材/cantact_review/review1.png"
+  },
+  {
+    "output": "assets/images/asset-2.webp",
+    "source": "其他/图片素材/cantact_review/review2.png"
+  },
+  {
+    "output": "assets/images/asset-3.webp",
+    "source": "其他/图片素材/cantact_review/review3.png"
+  },
+  {
+    "output": "assets/images/asset-4.webp",
+    "source": "其他/图片素材/cantact_review/review4.png"
+  },
+  {
+    "output": "assets/images/asset-5.webp",
+    "source": "其他/图片素材/cantact_review/review5.png"
+  },
+  {
+    "output": "assets/images/asset-6.webp",
+    "source": "其他/图片素材/cantact_review/review6.png"
+  },
+  {
+    "output": "assets/images/asset-7.webp",
+    "source": "其他/图片素材/cantact_review/review7.png"
+  },
+  {
+    "output": "assets/images/asset-8.webp",
+    "source": "其他/图片素材/cantact_review/review8.png"
+  },
+  {
+    "output": "assets/images/asset-9.webp",
+    "source": "其他/图片素材/cantact_review/review9.png"
+  },
+  {
+    "output": "assets/images/asset-10.webp",
+    "source": "其他/图片素材/cantact_review/review10.png"
+  },
+  {
+    "output": "assets/images/asset-11.webp",
+    "source": "其他/图片素材/cantact_review/review11.png"
+  },
+  {
+    "output": "assets/images/asset-12.webp",
+    "source": "其他/图片素材/cantact_review/review12.png"
+  },
+  {
+    "output": "assets/images/randomized-laptop.webp",
+    "source": "其他/图片素材/hdf5_repaly/laptop/laptop_demo41_frame_03.png"
+  },
+  {
+    "output": "assets/images/randomized-display.webp",
+    "source": "其他/图片素材/hdf5_repaly/monitor/monitor_demo210_frame_03.png"
+  },
+  {
+    "output": "assets/images/randomized-microwave.webp",
+    "source": "其他/图片素材/hdf5_repaly/microwave/microwave_w0_demo299_frame_03.png"
+  },
+  {
+    "output": "assets/images/randomized-drawer.webp",
+    "source": "其他/图片素材/hdf5_repaly/table/drawer_demo52_frame_03.png"
+  },
+  {
+    "output": "assets/images/randomized-lamp.webp",
+    "source": "其他/图片素材/hdf5_repaly/lamp/lamp_demo257_frame_03.png"
+  },
+  {
+    "output": "assets/images/randomized-faucet.webp",
+    "source": "其他/图片素材/hdf5_repaly/faucet/faucet_demo237_frame_03.png"
+  },
+  {
+    "output": "assets/videos/sim-laptop.mp4",
+    "source": "其他/demo/sim_mac_demo.mp4"
+  },
+  {
+    "output": "assets/videos/sim-display.mp4",
+    "source": "其他/demo/sim_display_demo.mp4"
+  },
+  {
+    "output": "assets/videos/sim-microwave.mp4",
+    "source": "其他/demo/sim_microwave_demo.mp4"
+  },
+  {
+    "output": "assets/videos/sim-drawer.mp4",
+    "source": "其他/demo/sim_table_demo.mp4"
+  },
+  {
+    "output": "assets/videos/sim-lamp.mp4",
+    "source": "其他/demo/sim_lamp_demo.mp4"
+  },
+  {
+    "output": "assets/videos/sim-faucet.mp4",
+    "source": "其他/demo/sim_faucet_demo.mp4"
+  },
+  {
+    "output": "assets/videos/real-display.mp4",
+    "source": "其他/demo/display_demo.mp4"
+  },
+  {
+    "output": "assets/videos/real-microwave.mp4",
+    "source": "其他/demo/microwave_demo.mp4"
+  },
+  {
+    "output": "assets/videos/real-drawer.mp4",
+    "source": "其他/demo/table_demo.mp4"
+  },
+  {
+    "output": "assets/videos/real-faucet.mp4",
+    "source": "其他/demo/faucet_demo.mp4"
+  },
+  {
+    "output": "assets/videos/overview.mp4",
+    "source": "code&demo/demo.mp4"
+  }
+]
