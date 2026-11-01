@@ -110,11 +110,14 @@ for (const video of [sim, real]) {
   });
 }
 
-const sections = [...document.querySelectorAll('main > section[id]')];
+const sections = [...document.querySelectorAll('main > section[id], #abstract')];
 const links = [...document.querySelectorAll('.contents nav a')];
 function updateContents() {
   let current = sections[0];
-  for (const section of sections) if (section.getBoundingClientRect().top <= 180) current = section;
+  const navigation = document.querySelector('.contents');
+  const header = document.querySelector('.masthead');
+  const cutoff = (window.innerWidth > 1100 ? header : navigation).getBoundingClientRect().bottom + 40;
+  for (const section of sections) if (section.getBoundingClientRect().top <= cutoff) current = section;
   links.forEach(link => {
     const active = link.getAttribute('href') === '#' + current.id;
     link.classList.toggle('active', active);
@@ -126,6 +129,7 @@ let scheduled = false;
 window.addEventListener('scroll', () => {
   if (!scheduled) { scheduled = true; requestAnimationFrame(() => { updateContents(); scheduled = false; }); }
 }, {passive: true});
+window.addEventListener('resize', updateContents);
 updateContents();
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) document.querySelectorAll('video').forEach(video => video.pause());
