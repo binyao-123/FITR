@@ -16,7 +16,7 @@ Live GitHub Pages address: https://binyao-123.github.io/FITR/
 
 Open `index.html` directly in a modern browser, or run `python3 -m http.server 4173` from this folder and visit `http://localhost:4173`.
 
-No build system, package installation, external font requests or CDN scripts are needed. Manrope is embedded in `style.css` under the SIL Open Font License; SVG icons use Lucide (ISC) and the official Hugging Face logo. All page paths are relative, so the site supports the `/FITR/` GitHub Pages subdirectory.
+No build system, package installation, external font requests or CDN scripts are needed. Typography uses the system Arial / Helvetica font stack. SVG icons use Lucide (ISC) and the official Hugging Face logo. All page paths are relative, so the site supports the `/FITR/` GitHub Pages subdirectory.
 
 ## Deploy
 

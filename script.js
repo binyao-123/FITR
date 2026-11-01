@@ -85,7 +85,7 @@ setupTabs('[data-task]', button => {
   document.querySelector('#task-instruction').textContent = '“' + task.instruction + '”';
   document.querySelector('#task-type').textContent = task.hard ? 'CHALLENGING TASK' : 'STANDARD TASK';
   document.querySelector('#real-media-type').textContent = task.real ? 'Robot rollout' : 'Paper snapshot';
-  note.textContent = task.real ? 'Independent recordings; playback starts together.' : 'Real-world panel: a static rollout snapshot from the paper.';
+  note.textContent = task.real ? '' : 'Real-world panel: a static rollout snapshot from the paper.';
   document.querySelector('#demo-panel').setAttribute('aria-labelledby', button.id);
   updatePlayLabel();
 });

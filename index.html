@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#faf7f0">
+  <meta name="theme-color" content="#ffffff">
   <title>FITR — From Articulated Object Images to Real-World Manipulation</title>
   <meta name="description" content="FITR: From Articulated Object Images to Interactive 3D Assets for Real-World Manipulation. 2,772 articulated assets, approximately 60k simulation demonstrations, and zero-shot sim-to-real transfer.">
   <meta property="og:title" content="FITR — From Images to Real-World Manipulation">
   <meta property="og:description" content="Interactive 3D assets. Scalable simulation data. Zero-shot real-world manipulation.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://binyao-123.github.io/FITR/assets/images/rollouts.webp">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css?v=2">
-  <script src="script.js?v=2" defer></script>
+  <link rel="icon" href="favicon.svg?v=3" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css?v=3">
+  <script src="script.js?v=3" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#overview">Skip to content</a>
@@ -20,7 +20,6 @@
 <div class="contents"><nav aria-label="Page sections"><a href="#overview">Overview</a><a href="#framework">Pipeline</a><a href="#assets">3D assets</a><a href="#data">Trajectory data</a><a href="#demos">Robot demos</a><a href="#results">Results</a><a href="#resources">Resources</a></nav></div>
 <main id="top">
 <section class="hero" aria-labelledby="paper-title">
-  <div class="eyebrow hero-kicker"><span class="tiny-square"></span> IMAGES → INTERACTIVE ASSETS → ROBOT MANIPULATION</div>
   <h1 id="paper-title"><strong>FITR:</strong> From Articulated Object Images to Interactive 3D Assets for Real-World Manipulation</h1>
   <!-- Author names, ordering and affiliations intentionally reserved. Add confirmed information here. -->
   <div class="author-slot" aria-label="Author and affiliation information to be added"><p id="authors"></p><p id="affiliations"></p></div>
@@ -124,72 +123,65 @@
 		d="M56.33 76.69c-2.75-4.04-2.56-7.07 1.22-10.84 3.77-3.77 5.97-9.3 5.97-9.3s.82-3.2 2.7-2.9c1.86.3 3.23 5.08-.68 8.01-3.92 2.93.78 4.92 2.28 2.17 1.51-2.75 5.63-9.82 7.76-11.18 2.13-1.35 3.64-.6 3.13 2.2-.5 2.79-9.42 9.55-8.55 11 .86 1.47 3.92-1.71 3.92-1.71s9.58-8.71 11.66-6.44c2.08 2.27-1.58 4.17-6.8 7.33-5.23 3.16-5.63 4-4.9 5.2.75 1.2 12.28-8.53 13.36-4.4 1.08 4.11-11.76 5.3-10.97 8.15.8 2.85 9.05-5.38 10.74-2.18 1.69 3.21-11.65 6.98-11.76 7.01-4.31 1.12-15.26 3.49-19.08-2.12Z"
 	/>
 </svg>
-</a></nav><p class="resource-key"><span><b>3D Assets</b> · articulated objects in URDF/USD</span><span><b>Trajectory Dataset</b> · robot demonstration episodes in HDF5</span></p>
+</a></nav>
 </section>
 
 <section id="overview" class="section">
-  <h2>From images to real-world interaction.</h2>
-  <p class="lead">An articulated asset needs more than appearance. It needs the right <strong>scale</strong>, actionable <strong>contact points</strong>, and realistic <strong>joint dynamics</strong>.</p>
-  <p>FITR completes these physical attributes, generates manipulation demonstrations in simulation, and trains vision-language-action policies that transfer <strong>zero-shot to real robots</strong>—without real-world policy fine-tuning.</p>
+  <h2>Overview</h2>
+  <p class="lead">FITR augments image-generated articulated objects with physical scale, contact points, and joint dynamics. It uses these assets to generate simulation demonstrations and train vision-language-action policies for <strong>zero-shot real-world manipulation</strong>.</p>
   <div class="stats" aria-label="FITR at a glance"><div><strong>2,772</strong><span>articulated assets</span></div><div><strong>12</strong><span>object categories</span></div><div><strong>≈60k</strong><span>simulation demonstrations</span></div><div><strong>6</strong><span>manipulation tasks</span></div></div>
   <details class="abstract"><summary>Read the abstract <span>+</span></summary><p>Collecting real-world training data for articulated object manipulation is costly, motivating scalable data generation in simulation. Recent advances in 3D asset generation have improved visual fidelity and geometric quality, but supporting robot interaction also requires appropriate physical dimensions, contact points and directions, and joint dynamics. To this end, we introduce FITR, a pipeline that constructs interactive 3D assets from images of articulated objects for policy learning in simulation and zero-shot deployment on real robots. We construct FITR-Assets by augmenting articulated assets with absolute scale, affordances, and calibrated joint drive parameters, and evaluate annotation quality on FITR-Bench. Using these assets, we combine motion planning with domain randomization to automatically collect approximately 60k manipulation demonstrations in Isaac Sim. Then, we fine-tune vision-language-action (VLA) policies via imitating the demonstrations and RL-driven simulated post-training, enabling zero-shot transfer to the real world. Through systematic ablation studies and comparative experiments in simulation and on real robots, we demonstrate that FITR enables zero-shot sim-to-real transfer for articulated object manipulation. We release FITR-Assets, the simulation demonstration dataset, policy checkpoints, and source code.</p></details>
 </section>
 
 <section id="framework" class="section">
-  <div class="section-topline"><span class="eyebrow">01 / METHOD</span></div>
-  <h2>The FITR pipeline.</h2>
-  <p>Connect image-generated objects to robot interaction through physical augmentation, scalable demonstration generation, and policy post-training.</p>
-  <figure class="paper-figure"><a href="assets/images/overview.webp" target="_blank" rel="noopener" aria-label="Open the FITR framework figure at full resolution"><img src="assets/images/overview.webp" alt="FITR framework: physical asset augmentation, Isaac Sim demonstration generation, VLA supervised fine-tuning, residual RL, recovery data collection and distillation." loading="lazy" width="2230" height="1348"></a><figcaption>Physical attributes make assets interactive. Simulation turns interaction into training data. Post-training improves recovery and transfer.</figcaption></figure>
-<div class="method-showcase">  <figure class="hero-film"><video controls playsinline muted preload="none" poster="assets/images/overview-poster.jpg" aria-label="FITR project demonstration"><source src="assets/videos/overview.mp4" type="video/mp4">Your browser does not support video. <a href="assets/videos/overview.mp4">Download the demo.</a></video><figcaption><span>FITR in action</span><span>From simulation to the real world</span></figcaption></figure>
-<div class="film-context"><span class="eyebrow">WATCH FITR IN ACTION</span><h3>From a digital object<br>to a real interaction.</h3><p>See the complete workflow and real robot demonstrations in a compact overview.</p><a class="text-link" href="#demos">Explore the task-by-task demos ↓</a></div></div>
-  <ol class="pipeline"><li><span>01</span><h3>Complete the physics</h3><p>Recover metric scale, derive geometry-based contacts, and calibrate equivalent joint drive parameters.</p></li><li><span>02</span><h3>Generate experience</h3><p>Combine articulated motion planning with scene and object randomization in Isaac Sim.</p></li><li><span>03</span><h3>Train, refine, transfer</h3><p>Fine-tune VLA policies; distill successful residual-RL recovery trajectories into the deployed policy.</p></li></ol>
+  <h2>Method</h2>
+  <p>FITR combines physical attribute augmentation, simulation data generation, and VLA policy training.</p>
+  <figure class="paper-figure"><a href="assets/images/overview.webp" target="_blank" rel="noopener" aria-label="Open the FITR framework figure at full resolution"><img src="assets/images/overview.webp" alt="FITR framework: physical asset augmentation, Isaac Sim demonstration generation, VLA supervised fine-tuning, residual RL, recovery data collection and distillation." loading="lazy" width="2230" height="1348"></a><figcaption>FITR pipeline: asset augmentation, demonstration generation, and policy training.</figcaption></figure>
+<div class="method-showcase">  <figure class="hero-film"><video controls playsinline muted preload="none" poster="assets/images/overview-poster.jpg" aria-label="FITR project demonstration"><source src="assets/videos/overview.mp4" type="video/mp4">Your browser does not support video. <a href="assets/videos/overview.mp4">Download the demo.</a></video></figure>
+<div class="film-context"><h3>Project Video</h3><p>Asset generation, simulation training, and real-world robot experiments.</p><a class="text-link" href="#demos">Task demonstrations ↓</a></div></div>
+  <ol class="pipeline"><li><span>01</span><h3>Physical augmentation</h3><p>Recover metric scale, derive geometry-based contacts, and calibrate equivalent joint drive parameters.</p></li><li><span>02</span><h3>Demonstration generation</h3><p>Combine articulated motion planning with scene and object randomization in Isaac Sim.</p></li><li><span>03</span><h3>Policy training</h3><p>Fine-tune VLA policies; distill successful residual-RL recovery trajectories into the deployed policy.</p></li></ol>
 </section>
 
 <section id="assets" class="section">
-  <span class="eyebrow">02 / FITR-ASSETS</span>
-  <h2>Beyond geometry. Ready for interaction.</h2>
+  <h2>FITR-Assets</h2>
   <p>FITR-Assets augments <strong>2,772 objects across 12 categories</strong> with metric dimensions, contact points and directions, and calibrated stiffness, damping, and effort limits. FITR-Bench contains 240 objects for attribute evaluation.</p>
   <div class="asset-story">
     <div class="tablist" role="tablist" aria-label="Asset example"><button role="tab" id="asset-tab-laptop" aria-selected="true" aria-controls="asset-panel" data-asset="laptop">Laptop</button><button role="tab" id="asset-tab-display" aria-selected="false" aria-controls="asset-panel" tabindex="-1" data-asset="display">Display</button><button role="tab" id="asset-tab-microwave" aria-selected="false" aria-controls="asset-panel" tabindex="-1" data-asset="microwave">Microwave</button></div>
     <div class="asset-stages" id="asset-panel" role="tabpanel" aria-labelledby="asset-tab-laptop"><figure><span class="stage-label">01 / Input image</span><img id="asset-input" src="assets/images/laptop-input.webp" alt="Laptop source image" loading="lazy" width="1280" height="1707"></figure><span class="stage-arrow" aria-hidden="true">→</span><figure><span class="stage-label">02 / Articulated geometry</span><img id="asset-urdf" src="assets/images/laptop-urdf.webp" alt="Laptop articulated URDF asset" loading="lazy" width="1244" height="661"></figure><span class="stage-arrow" aria-hidden="true">→</span><figure><span class="stage-label">03 / Actionable contact</span><img id="asset-contact" src="assets/images/laptop-contact.webp" alt="Laptop contact annotation" loading="lazy" width="1246" height="665"></figure></div>
-    <p class="small-note">Image-generated geometry is augmented with physical scale, interaction affordances, and joint drive parameters.</p>
+  
   </div>
   <figure class="paper-figure contact-figure"><a href="assets/images/contacts.webp" target="_blank" rel="noopener" aria-label="View contact annotations at full resolution"><img src="assets/images/contacts.webp" alt="Contact-point annotations across twelve articulated object categories, including dishwasher, display, door, faucet, knife, laptop, microwave, scissors, refrigerator, cabinet, drawer and lamp." loading="lazy" width="1100" height="817"></a><figcaption>Contact annotations across the 12 object categories. Red markers indicate interaction locations.</figcaption></figure>
   <div class="category-list" aria-label="Asset categories"><span>Laptop</span><span>Display</span><span>Microwave</span><span>Drawer</span><span>Lamp</span><span>Faucet</span><span>Knife</span><span>Dishwasher</span><span>Door</span><span>Refrigerator</span><span>Scissors</span><span>Storage cabinet</span></div>
-  <a class="text-link" href="https://huggingface.co/datasets/binyao929/FITR_urdf_usd_datasets" target="_blank" rel="noopener">Explore the URDF & USD asset collection ↗</a>
+  <a class="text-link" href="https://huggingface.co/datasets/binyao929/FITR_urdf_usd_datasets" target="_blank" rel="noopener">Download 3D assets ↗</a>
 </section>
 
 <section id="data" class="section">
-  <span class="eyebrow">03 / SIMULATION DATA</span>
-  <h2>Scalable demonstrations. Diverse worlds.</h2>
+  <h2>Simulation Demonstrations</h2>
   <p>Motion planning generates successful interactions with augmented assets. Randomized object poses, articulation states, lighting, backgrounds, cameras, and clutter broaden the training distribution. Approximately <strong>10k demonstrations per task</strong> form a dataset of about 60k trajectories.</p>
   <div class="data-mosaic"><figure><img src="assets/images/randomized-laptop.webp" alt="Randomized laptop manipulation scene" loading="lazy" width="448" height="224"><figcaption>Laptop</figcaption></figure><figure><img src="assets/images/randomized-display.webp" alt="Randomized display manipulation scene" loading="lazy" width="448" height="224"><figcaption>Display</figcaption></figure><figure><img src="assets/images/randomized-microwave.webp" alt="Randomized microwave manipulation scene" loading="lazy" width="448" height="224"><figcaption>Microwave</figcaption></figure><figure><img src="assets/images/randomized-drawer.webp" alt="Randomized drawer manipulation scene" loading="lazy" width="448" height="224"><figcaption>Drawer</figcaption></figure><figure><img src="assets/images/randomized-lamp.webp" alt="Randomized lamp manipulation scene" loading="lazy" width="448" height="224"><figcaption>Lamp</figcaption></figure><figure><img src="assets/images/randomized-faucet.webp" alt="Randomized faucet manipulation scene" loading="lazy" width="448" height="224"><figcaption>Faucet</figcaption></figure></div>
-  <div class="data-footer"><p>Isaac Sim · Motion planning · Domain randomization · HDF5 trajectories</p><a class="text-link" href="https://huggingface.co/datasets/binyao929/physvla_FITR_sim_collect_hdf5" target="_blank" rel="noopener">Get the trajectory dataset ↗</a></div>
+  <div class="data-footer"><a class="text-link" href="https://huggingface.co/datasets/binyao929/physvla_FITR_sim_collect_hdf5" target="_blank" rel="noopener">Download trajectory dataset ↗</a></div>
 </section>
 
 <section id="demos" class="section">
-  <span class="eyebrow">04 / ZERO-SHOT TRANSFER</span>
-  <h2>Learned in simulation. Deployed in reality.</h2>
-  <p>Six articulated manipulation tasks connect simulation to real robot execution. Select a task to inspect the demonstrations side by side.</p>
+  <h2>Sim-to-Real Evaluation</h2>
+  <p>Policies trained in simulation are evaluated on six real-world articulated manipulation tasks, without real-world fine-tuning.</p>
   <div class="demo-switcher tablist" role="tablist" aria-label="Manipulation task"><button role="tab" id="task-tab-microwave" aria-selected="true" aria-controls="demo-panel" data-task="microwave">Microwave</button><button role="tab" id="task-tab-display" aria-selected="false" aria-controls="demo-panel" tabindex="-1" data-task="display">Display</button><button role="tab" id="task-tab-drawer" aria-selected="false" aria-controls="demo-panel" tabindex="-1" data-task="drawer">Drawer</button><button role="tab" id="task-tab-faucet" aria-selected="false" aria-controls="demo-panel" tabindex="-1" data-task="faucet">Faucet</button><button role="tab" id="task-tab-laptop" aria-selected="false" aria-controls="demo-panel" tabindex="-1" data-task="laptop">Laptop</button><button role="tab" id="task-tab-lamp" aria-selected="false" aria-controls="demo-panel" tabindex="-1" data-task="lamp">Lamp</button></div>
   <div id="demo-panel" role="tabpanel" aria-labelledby="task-tab-microwave"><div class="demo-heading"><h3 id="task-instruction">“Close the microwave door.”</h3><span id="task-type">STANDARD TASK</span></div>
     <div class="demo-pair"><figure><figcaption><span class="status-dot sim"></span>Simulation <small>Isaac Sim</small></figcaption><div class="video-well"><video id="sim-video" controls muted playsinline loop preload="metadata" poster="assets/images/sim-microwave-poster.jpg" src="assets/videos/sim-microwave.mp4" aria-label="Microwave simulation demonstration"></video></div></figure><figure><figcaption><span class="status-dot real"></span>Real world <small id="real-media-type">Robot rollout</small></figcaption><div class="video-well"><video id="real-video" controls muted playsinline loop preload="metadata" poster="assets/images/real-microwave-poster.jpg" src="assets/videos/real-microwave.mp4" aria-label="Microwave real-world demonstration"></video><img id="real-snapshot" src="assets/images/real-laptop.webp" alt="Real-world rollout snapshot" hidden width="355" height="424"></div></figure></div>
-    <div class="demo-controls"><button id="play-pair" class="plain-button">▶ Play both</button><button id="restart-pair" class="plain-button">↺ Restart</button><span id="demo-note" class="small-note" aria-live="polite">Independent recordings; playback starts together.</span></div>
+    <div class="demo-controls"><button id="play-pair" class="plain-button">▶ Play both</button><button id="restart-pair" class="plain-button">↺ Restart</button><span id="demo-note" class="small-note" aria-live="polite"></span></div>
   </div>
   <figure class="paper-figure rollout-figure"><a href="assets/images/rollouts.webp" target="_blank" rel="noopener" aria-label="View all six sim-to-real rollout snapshots"><img src="assets/images/rollouts.webp" alt="Six corresponding simulated and real-world rollout snapshots: microwave, laptop, display, faucet, drawer and lamp." loading="lazy" width="2189" height="734"></a><figcaption>All six tasks: simulation (top) and real-world execution (bottom).</figcaption></figure>
 </section>
 
 <section id="results" class="section">
-  <span class="eyebrow">05 / EVALUATION</span>
-  <h2>Better physical grounding. Stronger transfer.</h2>
+  <h2>Experimental Results</h2>
   <p>We evaluate physical attribute completion on FITR-Bench and manipulation using <strong>Normalized Joint Completion (NJC)</strong>. NJC measures how far the object joint moves toward its target; higher is better.</p>
   <div class="result-highlights"><div><span class="eyebrow">SCALE ERROR / sMAPE ↓</span><p><del>27.75%</del><span>→</span><strong>7.93%</strong></p><small>Reference-guided scale recovery</small></div><div><span class="eyebrow">CONTACT ERROR / MAE ↓</span><p><del>21.45 cm</del><span>→</span><strong>1.48 cm</strong></p><small>Geometry-based contact derivation</small></div></div>
 <div class="results-grid"><figure class="result-card"><a href="assets/images/sim-to-real.webp" target="_blank" rel="noopener" aria-label="Open Zero-shot sim-to-real transfer figure at full resolution"><img src="assets/images/sim-to-real.webp" alt="Zero-shot sim-to-real transfer" loading="lazy" width="2071" height="1164"></a><figcaption><strong>Zero-shot sim-to-real transfer</strong>π₀.₅ reaches 68.95% mean NJC in simulation and 57.25% on real robots.</figcaption></figure><figure class="result-card"><a href="assets/images/backbones.webp" target="_blank" rel="noopener" aria-label="Open Three VLA backbones figure at full resolution"><img src="assets/images/backbones.webp" alt="Three VLA backbones" loading="lazy" width="2191" height="1164"></a><figcaption><strong>Three VLA backbones</strong>Mean real-world NJC: PRTS 60.93%, π₀.₅ 57.99%, and X-VLA 54.55%.</figcaption></figure><figure class="result-card"><a href="assets/images/post-training.webp" target="_blank" rel="noopener" aria-label="Open Simulation post-training figure at full resolution"><img src="assets/images/post-training.webp" alt="Simulation post-training" loading="lazy" width="2311" height="1224"></a><figcaption><strong>Simulation post-training</strong>PRTS improves from 60.05% to 82.50% mean real-world NJC. Lines: simulation; bars: real-world evaluation.</figcaption></figure><div class="result-card result-takeaway"><span class="eyebrow">PRTS · BEFORE / AFTER POST-TRAINING</span><p class="big-gain">+22.45 <span>percentage points<br>in real-world NJC</span></p><table><caption>Mean NJC (%) ↑</caption><thead><tr><th scope="col">Evaluation</th><th scope="col">Before</th><th scope="col">After</th></tr></thead><tbody><tr><th scope="row">Simulation</th><td>68.48</td><td><strong>91.05</strong></td></tr><tr><th scope="row">Real world</th><td>60.05</td><td><strong>82.50</strong></td></tr></tbody></table><p>The robot runs the distilled VLA policy alone, with no real-world policy fine-tuning.</p></div></div><div class="table-card"><div class="table-scroll" tabindex="0" role="region" aria-label="Physical attribute evaluation table"><table class="research-table"><caption>Physical attribute completion on FITR-Bench <span>Lower errors are better; higher handle accuracy is better.</span></caption><thead><tr><th rowspan="2" scope="col">Category</th><th colspan="2" scope="colgroup">Scale · sMAPE (%) ↓</th><th colspan="2" scope="colgroup">Contact · MAE (cm) ↓</th><th rowspan="2" scope="col">Handle<br>accuracy (%) ↑</th></tr><tr><th scope="col">VLM</th><th scope="col">Ours</th><th scope="col">VLM</th><th scope="col">Ours</th></tr></thead><tbody><tr><th scope="row">Laptop</th><td>17.21</td><td><strong>10.94</strong></td><td>11.90</td><td><strong>0.66</strong></td><td>—</td></tr><tr><th scope="row">Display</th><td>10.13</td><td><strong>6.45</strong></td><td>15.89</td><td><strong>0.84</strong></td><td>—</td></tr><tr><th scope="row">Microwave</th><td>5.45</td><td><strong>2.96</strong></td><td>23.80</td><td><strong>1.07</strong></td><td>95.10</td></tr><tr><th scope="row">Drawer</th><td>57.80</td><td><strong>18.10</strong></td><td>5.01</td><td><strong>0.94</strong></td><td>—</td></tr><tr><th scope="row">Lamp</th><td>4.51</td><td><strong>3.92</strong></td><td>9.76</td><td><strong>1.17</strong></td><td>—</td></tr><tr><th scope="row">Faucet</th><td>29.98</td><td><strong>10.81</strong></td><td>5.43</td><td><strong>0.48</strong></td><td>—</td></tr><tr><th scope="row">Knife</th><td>9.43</td><td><strong>9.13</strong></td><td>4.54</td><td><strong>0.33</strong></td><td>—</td></tr><tr><th scope="row">Dishwasher</th><td>30.69</td><td><strong>5.51</strong></td><td>36.66</td><td><strong>0.92</strong></td><td>94.30</td></tr><tr><th scope="row">Door</th><td>65.63</td><td><strong>2.05</strong></td><td>74.48</td><td><strong>5.54</strong></td><td>97.50</td></tr><tr><th scope="row">Refrigerator</th><td>31.30</td><td><strong>4.22</strong></td><td>49.47</td><td><strong>4.33</strong></td><td>97.10</td></tr><tr><th scope="row">Scissors</th><td>18.66</td><td><strong>8.87</strong></td><td>7.64</td><td><strong>0.31</strong></td><td>—</td></tr><tr><th scope="row">Storage cabinet</th><td>52.19</td><td><strong>12.16</strong></td><td>12.82</td><td><strong>1.21</strong></td><td>93.80</td></tr><tr class="mean-row"><th scope="row">Mean</th><td>27.75</td><td><strong>7.93</strong></td><td>21.45</td><td><strong>1.48</strong></td><td>95.56</td></tr></tbody></table></div><p class="small-note">Ours: VLM with scale references; geometry-derived contact points. Handle accuracy is averaged over the five reported categories; — indicates an unreported value.</p></div><div class="table-card"><div class="table-scroll" tabindex="0" role="region" aria-label="Randomization ablation table"><table class="research-table"><caption>Domain randomization ablation <span>π₀.₅ · NJC (%) ↑ · standard and challenging tasks</span></caption><thead><tr><th scope="col">Environment</th><th scope="col">Randomization</th><th scope="col">Laptop</th><th scope="col">Display</th><th scope="col">Microwave</th><th scope="col">Drawer</th><th scope="col">Lamp</th><th scope="col">Faucet</th></tr></thead><tbody><tr><th scope="row">Simulation</th><td>Full</td><td><strong>81.7</strong></td><td><strong>76.3</strong></td><td><strong>95.3</strong></td><td><strong>83.2</strong></td><td><strong>45.7</strong></td><td><strong>30.5</strong></td></tr><tr><th scope="row">Simulation</th><td>None</td><td>40.6</td><td>21.9</td><td>22.7</td><td>15.4</td><td>6.8</td><td>8.9</td></tr><tr><th scope="row">Real world</th><td>Full</td><td><strong>68.3</strong></td><td><strong>66.8</strong></td><td><strong>89.4</strong></td><td><strong>75.3</strong></td><td><strong>20.4</strong></td><td><strong>25.9</strong></td></tr><tr><th scope="row">Real world</th><td>None</td><td>25.5</td><td>19.9</td><td>18.8</td><td>8.9</td><td>1.9</td><td>3.5</td></tr></tbody></table></div><p class="small-note">Full / None: full / no randomization. This comparison also changes dataset size (300 → approximately 10k demonstrations per task) and training budget (5k → 30k steps), so the gains reflect the combined changes.</p></div><p class="small-note evaluation-note">Protocol: 50 simulation rollouts or 20 real-world trials per condition. Comparisons use separate evaluation trials. NJC measures joint completion, not binary success. Current real-world evaluation covers six single-object articulated tasks. Source: FITR manuscript, §4.</p>
 </section>
 
 <section id="resources" class="section resources">
-  <span class="eyebrow">06 / OPEN RESOURCES</span>
-  <h2>Explore. Reproduce. Build on FITR.</h2>
+  <h2>Resources</h2>
   <div class="resource-list"><a href="assets/paper/FITR.pdf" target="_blank" rel="noopener"><span class="resource-index">01</span><div><h3>Paper</h3><p>Method, experiments, and implementation details.</p></div><span class="resource-end"><svg class="resource-icon" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 24 24"
@@ -218,7 +210,7 @@
   <path d="m6 8-4 4 4 4" />
   <path d="m14.5 4-5 16" />
 </svg>
-</span></a><a href="https://huggingface.co/datasets/binyao929/FITR_urdf_usd_datasets" target="_blank" rel="noopener"><span class="resource-index">03</span><div><h3>3D Assets</h3><p>Articulated digital objects with geometry, physical scale, contacts and joint parameters. URDF & USD.</p></div><span class="resource-end"><svg class="resource-icon" aria-hidden="true" focusable="false"
+</span></a><a href="https://huggingface.co/datasets/binyao929/FITR_urdf_usd_datasets" target="_blank" rel="noopener"><span class="resource-index">03</span><div><h3>3D Assets</h3><p>Articulated 3D objects with physical attributes. URDF / USD.</p></div><span class="resource-end"><svg class="resource-icon" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 24 24"
   fill="none"
@@ -240,7 +232,7 @@
   <path d="m12 8 4.74-2.85" />
   <path d="M12 13.5V8" />
 </svg>
-</span></a><a href="https://huggingface.co/datasets/binyao929/physvla_FITR_sim_collect_hdf5" target="_blank" rel="noopener"><span class="resource-index">04</span><div><h3>Trajectory Dataset</h3><p>Robot manipulation episodes: observation and action sequences in HDF5 format.</p></div><span class="resource-end"><svg class="resource-icon" aria-hidden="true" focusable="false"
+</span></a><a href="https://huggingface.co/datasets/binyao929/physvla_FITR_sim_collect_hdf5" target="_blank" rel="noopener"><span class="resource-index">04</span><div><h3>Trajectory Dataset</h3><p>Robot demonstration episodes with observations and actions. HDF5.</p></div><span class="resource-end"><svg class="resource-icon" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 24 24"
   fill="none"
@@ -253,7 +245,7 @@
   <path d="M3 5V19A9 3 0 0 0 21 19V5" />
   <path d="M3 12A9 3 0 0 0 21 12" />
 </svg>
-</span></a><a href="https://huggingface.co/datasets/binyao929/FITR_MODELS" target="_blank" rel="noopener"><span class="resource-index">05</span><div><h3>Policy checkpoints</h3><p>Released FITR model checkpoints.</p></div><span class="resource-end"><svg viewBox="0 0 95 88" class="resource-icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="none">
+</span></a><a href="https://huggingface.co/datasets/binyao929/FITR_MODELS" target="_blank" rel="noopener"><span class="resource-index">05</span><div><h3>Policy checkpoints</h3><p>Trained policy checkpoints.</p></div><span class="resource-end"><svg viewBox="0 0 95 88" class="resource-icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="none">
 	<path fill="#FFD21E" d="M47.21 76.5a34.75 34.75 0 1 0 0-69.5 34.75 34.75 0 0 0 0 69.5Z" />
 	<path
 		fill="#FF9D0B"
@@ -292,7 +284,7 @@
 </svg>
 </span></a></div>
 </section>
-<footer><a class="wordmark" href="#top">FITR<span>.</span></a><p>From images to real-world manipulation.</p><p class="credit">Layout inspired by <a href="https://robbyant-research.github.io/Zero-WAM/" target="_blank" rel="noopener">Zero-WAM</a>. Research content and media: FITR.</p></footer>
+<footer><a class="wordmark" href="#top">FITR<span>.</span></a><p class="credit">Layout inspired by <a href="https://robbyant-research.github.io/Zero-WAM/" target="_blank" rel="noopener">Zero-WAM</a>. Research content and media: FITR.</p></footer>
 </main>
 <!-- SVG icons: https://lucide.dev (ISC). Hugging Face logo: https://huggingface.co/brand
 ISC License
