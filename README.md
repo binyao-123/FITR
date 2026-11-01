@@ -2,7 +2,7 @@
 
 Project page for **FITR: From Articulated Object Images to Interactive 3D Assets for Real-World Manipulation**.
 
-Intended GitHub Pages address: https://binyao-123.github.io/FITR/
+Live GitHub Pages address: https://binyao-123.github.io/FITR/
 
 ## Contents
 
@@ -20,7 +20,7 @@ No build system, package installation, external fonts or CDN scripts are needed.
 
 ## Deploy
 
-Push this folder's contents to the root of `binyao-123/FITR`, on branch `main`. In **Settings → Pages**, choose **GitHub Actions** as the source. The included `.github/workflows/pages.yml` deploys only the website and its assets.
+Push this folder's contents to the root of `binyao-123/FITR`, on branch `main`. In **Settings → Pages**, choose **GitHub Actions** as the source. The included `.github/workflows/publish.yml` deploys only the website and its assets.
 
 Alternatively, choose **Deploy from a branch → main → /(root)**. The root `index.html` and `.nojekyll` support branch-based publishing too; use only one deployment approach at a time.
 
