@@ -1,0 +1,46 @@
+name: Publish FITR website
+on:
+  push:
+    branches: [main]
+    paths: ['FITR-GitHub-Pages.zip', 'index.html', 'style.css', 'script.js', 'assets/**', '.github/workflows/publish.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    if: github.event_name == 'workflow_dispatch' || github.event.head_commit.message != 'Configure FITR publication'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore website source on first publication
+        run: |
+          if [ ! -f index.html ]; then
+            unzip -q FITR-GitHub-Pages.zip -d /tmp/fitr-source
+            cp /tmp/fitr-source/index.html /tmp/fitr-source/style.css /tmp/fitr-source/script.js /tmp/fitr-source/favicon.svg /tmp/fitr-source/README.md /tmp/fitr-source/.nojekyll /tmp/fitr-source/.gitignore .
+            cp -R /tmp/fitr-source/assets /tmp/fitr-source/maintenance .
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add index.html style.css script.js favicon.svg README.md .nojekyll .gitignore assets maintenance
+            git commit -m 'Expand FITR website source and research media'
+            git push
+          fi
+      - uses: actions/configure-pages@v5
+      - name: Prepare website
+        run: |
+          mkdir _site
+          cp index.html style.css script.js favicon.svg .nojekyll _site/
+          cp -R assets _site/assets
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
